@@ -25,10 +25,17 @@
   },
   "packOptions": {
     "ignore": [
-      { "type": "glob", "value": "**/*.ts" },
-      { "type": "glob", "value": "tsconfig.json" }
+      {
+        "type": "glob",
+        "value": "**/*.ts"
+      },
+      {
+        "type": "glob",
+        "value": "tsconfig.json"
+      }
     ],
     "include": []
   },
-  "editorSetting": {}
+  "editorSetting": {},
+  "isGameTourist": false
 }
