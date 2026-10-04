@@ -41,11 +41,7 @@ export default function RevealPanel({ puzzle, scoredItems }: RevealPanelProps) {
                   )}
                 </span>
                 <span className="reveal-winrate">{m.winrate}%</span>
-                {mark && (
-                  <span className={mark.points > 0 ? 'reveal-points' : 'reveal-points zero'}>
-                    {mark.points > 0 ? `+${mark.points}分` : '0分'}
-                  </span>
-                )}
+                {mark && <span className="reveal-points">+{mark.points}分</span>}
               </div>
               <div className="bar-track">
                 <div
@@ -67,7 +63,7 @@ export default function RevealPanel({ puzzle, scoredItems }: RevealPanelProps) {
                 {uciToChinese(s.uci, board, side)}
                 <span className="reveal-uci">{s.uci}</span>
               </span>
-              <span className="reveal-points zero">按胜率 30 处理 · 0分</span>
+              <span className="reveal-points">按胜率 30 处理 · +{s.points}分</span>
             </div>
           ))}
         </div>
