@@ -1,0 +1,12 @@
+{
+  "pages": ["pages/index/index"],
+  "window": {
+    "navigationBarTitleText": "象棋扫雷",
+    "navigationBarBackgroundColor": "#16110d",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#16110d",
+    "backgroundTextStyle": "dark"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

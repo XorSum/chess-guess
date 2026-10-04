@@ -1,5 +1,5 @@
-import type { Board, GamePhase, MarkedMove, Side, Square } from '../types';
-import { pieceSide, sameSquare } from '../fen';
+import type { Board, GamePhase, MarkedMove, Side, Square } from '../../../core/types';
+import { pieceSide, sameSquare } from '../../../core/fen';
 import Piece from './Piece';
 
 const CELL = 56;

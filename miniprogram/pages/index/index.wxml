@@ -1,0 +1,53 @@
+<view class="page">
+  <view class="app-header">
+    <text class="title">象棋扫雷</text>
+    <view class="header-stats">
+      <text>第 {{round}} 题</text>
+      <text wx:if="{{hint}}" class="header-hint">{{hint}}</text>
+      <text>总分 {{totalScore}}</text>
+    </view>
+  </view>
+
+  <view class="board-wrap">
+    <canvas
+      type="2d"
+      id="board"
+      class="board"
+      style="width:{{boardW}}px;height:{{boardH}}px"
+      bindtap="onBoardTap"
+    ></canvas>
+  </view>
+
+  <view class="action-bar">
+    <text class="action-status {{statusIsScore ? 'score' : ''}}">{{statusText}}</text>
+    <button class="primary-btn" disabled="{{btnDisabled}}" bindtap="onAction">{{btnLabel}}</button>
+  </view>
+
+  <view wx:if="{{showReveal}}" class="reveal-panel">
+    <view class="reveal-title">胜率揭晓<text class="reveal-title-hint">{{revealTitleHint}}</text></view>
+    <view class="reveal-list">
+      <view
+        wx:for="{{revealItems}}"
+        wx:key="uci"
+        class="reveal-item {{item.marked ? 'reveal-marked' : ''}}"
+      >
+        <view class="reveal-row">
+          <text class="reveal-move">{{item.chinese}}<text class="reveal-uci">{{item.uci}}</text><text wx:if="{{item.pickRate}}" class="reveal-uci">选择率 {{item.pickRate}}%</text></text>
+          <text class="reveal-winrate">{{item.winrate}}%</text>
+          <text wx:if="{{item.marked}}" class="reveal-points">+{{item.points}}分</text>
+        </view>
+        <view class="bar-track">
+          <view class="bar {{item.barClass}}" style="width:{{item.winrate}}%"></view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{notInBookItems.length > 0}}" class="not-in-book">
+      <view class="not-in-book-title">未纳入候选</view>
+      <view wx:for="{{notInBookItems}}" wx:key="uci" class="not-in-book-row">
+        <text>{{item.chinese}}<text class="reveal-uci">{{item.uci}}</text></text>
+        <text class="reveal-points">按胜率 30 处理 · +{{item.points}}分</text>
+      </view>
+    </view>
+  </view>
+</view>

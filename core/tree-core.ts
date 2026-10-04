@@ -1,5 +1,7 @@
-// 开局树：public/opening-tree.json 的加载与动态出题
-// 树由 scripts/build-opening-tree.ts 基于 14 万局棋谱统计生成（贝叶斯收缩胜率）。
+// 开局树纯逻辑（与平台无关）：类型、稳定 id、树键换算、动态出题。
+// 数据 opening-tree.json 由 pipeline 构建（14 万局统计 + 贝叶斯收缩胜率）。
+// 网页装载层 web/src/tree.ts（fetch 懒加载）与小程序装载层 miniprogram/logic/tree.ts
+// （require 打包数据）各自负责取数，出题逻辑两端共用此处。
 import type { Puzzle } from './types';
 
 export interface TreeMove {
@@ -17,22 +19,14 @@ export interface TreeNode {
 export interface OpeningTree {
   version: number;
   priorK: number;
-  minCandidateMoves: number; // 题目合格条件：节点内走法数 ≥ 此值
+  minPositionGames?: number; // 节点入选条件：局面总局数下限
+  minMoveCount?: number; // 走法入选条件：对局数下限
+  minCandidateMoves?: number; // 题目合格条件：节点内走法数 ≥ 此值
   nodes: Record<string, TreeNode>; // key = FEN 棋局部分 + 行棋方，如 "...RNBAKABNR w"
 }
 
-let cached: Promise<OpeningTree> | null = null;
-
-export function loadTree(): Promise<OpeningTree> {
-  cached ??= fetch('/opening-tree.json').then((res) => {
-    if (!res.ok) throw new Error(`开局树加载失败：HTTP ${res.status}`);
-    return res.json() as Promise<OpeningTree>;
-  });
-  return cached;
-}
-
 // djb2 哈希，给树题目一个稳定 id
-function fenId(key: string): string {
+export function fenId(key: string): string {
   let h = 5381;
   for (let i = 0; i < key.length; i++) h = ((h << 5) + h + key.charCodeAt(i)) >>> 0;
   return `tree-${h.toString(36)}`;

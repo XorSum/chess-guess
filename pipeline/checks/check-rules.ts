@@ -1,7 +1,7 @@
-// 走法规则校验：npx tsx scripts/check-rules.ts
-import { parseFen, uciToSquares } from '../src/fen';
-import { isLegalMove } from '../src/rules';
-import { PUZZLES } from '../src/puzzles';
+// 走法规则校验：npx tsx pipeline/checks/check-rules.ts
+import { parseFen, uciToSquares } from '../../core/fen';
+import { isLegalMove } from '../../core/rules';
+import { PUZZLES } from '../../web/src/puzzles';
 
 const START = 'rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR';
 

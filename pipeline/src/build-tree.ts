@@ -1,16 +1,16 @@
-// 开局树构建：npx tsx scripts/build-opening-tree.ts
+// 开局树构建：npx tsx pipeline/src/build-tree.ts
 // 与 build-opening-puzzles.ts 相同的棋谱统计管线，差异：
 // 1) 贝叶斯收缩：winrate = round((score + k×0.5) / (count + k) × 100)，k=50，低频走法向 50% 收缩
-// 2) 输出树文件 public/opening-tree.json（静态资源走 fetch，不进 bundle）
+// 2) 输出树文件 web/public/opening-tree.json（静态资源走 fetch，不进 bundle）
 // 每个走法含 winrate（收缩后，计分用）、count（对局数）、raw（裸胜率）。
 import { createReadStream, writeFileSync } from 'node:fs';
 import readline from 'node:readline';
-import { parseFen, uciToSquares, pieceSide } from '../src/fen';
-import { isLegalMove } from '../src/rules';
-import type { Board, Side, Square } from '../src/types';
+import { parseFen, uciToSquares, pieceSide } from '../../core/fen';
+import { isLegalMove } from '../../core/rules';
+import type { Board, Side, Square } from '../../core/types';
 
-const INPUTS = ['data/games/wxf.jsonl', 'data/games/dongping.jsonl'];
-const OUTPUT = 'public/opening-tree.json';
+const INPUTS = ['pipeline/data/games/wxf.jsonl', 'pipeline/data/games/dongping.jsonl'];
+const OUTPUT = 'web/public/opening-tree.json';
 
 const MAX_PLY = 20; // 前 10 回合
 const MIN_POSITION_GAMES = 30; // 节点入选：局面总局数

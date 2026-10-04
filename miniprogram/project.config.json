@@ -1,0 +1,34 @@
+{
+  "compileType": "miniprogram",
+  "appid": "touristappid",
+  "projectname": "chess-guess",
+  "libVersion": "3.17.3",
+  "setting": {
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "urlCheck": true,
+    "coverView": true,
+    "lazyloadPlaceholderEnable": false,
+    "preloadBackgroundData": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "compileHotReLoad": true,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
+  },
+  "packOptions": {
+    "ignore": [
+      { "type": "glob", "value": "**/*.ts" },
+      { "type": "glob", "value": "tsconfig.json" }
+    ],
+    "include": []
+  },
+  "editorSetting": {}
+}

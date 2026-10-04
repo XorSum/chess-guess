@@ -1,0 +1,227 @@
+/* 主页面：暗色主题，样式移植自网页版 src/styles.css */
+.page {
+  padding-bottom: 48px;
+}
+
+.app-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  padding: 14px 16px 12px;
+}
+
+.title {
+  font-size: 22px;
+  letter-spacing: 5px;
+  color: #e8c474;
+  font-family: 'Kaiti SC', 'STKaiti', KaiTi, serif;
+  font-weight: bold;
+}
+
+.header-stats {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  color: #d9cbb2;
+}
+
+.header-hint {
+  color: #e8c474;
+}
+
+.board-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 0 12px;
+}
+
+.board {
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.53);
+}
+
+/* 主操作栏：固定于棋盘正下方，提交/下一题同一位置 */
+.action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 12px 12px 0;
+  padding: 10px 16px;
+  min-height: 62px;
+  box-sizing: border-box;
+  background: #241b12;
+  border: 1px solid #4a3722;
+  border-radius: 12px;
+  max-width: 544px;
+  width: calc(100% - 24px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.action-status {
+  font-size: 14px;
+  color: #a89985;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.action-status.score {
+  font-size: 18px;
+  font-weight: 700;
+  color: #6fd39a;
+}
+
+.primary-btn {
+  flex-shrink: 0;
+  min-width: 128px;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff8ec;
+  background: linear-gradient(180deg, #b0412e, #8c2f20);
+  border: 1px solid #d4694f;
+  border-radius: 8px;
+  line-height: 1.2;
+}
+
+.primary-btn[disabled] {
+  opacity: 0.45;
+  color: #fff8ec;
+  background: linear-gradient(180deg, #b0412e, #8c2f20);
+}
+
+/* 揭晓面板：纯信息展示，主操作在上方固定操作栏 */
+.reveal-panel {
+  margin: 16px 12px 0;
+  padding: 16px;
+  background: #241b12;
+  border: 1px solid #4a3722;
+  border-radius: 12px;
+  max-width: 544px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #e8c474;
+  margin-bottom: 12px;
+}
+
+.reveal-title-hint {
+  margin-left: 10px;
+  font-size: 13px;
+  font-weight: normal;
+  color: #9a8a6a;
+}
+
+.reveal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.reveal-item {
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: #2d2216;
+  border: 1px solid transparent;
+}
+
+.reveal-marked {
+  border-color: #e8c474;
+  background: rgba(55, 40, 23, 0.5);
+}
+
+.reveal-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.reveal-move {
+  flex: 1;
+  font-size: 15px;
+  color: #ece2d0;
+}
+
+.reveal-uci {
+  margin-left: 8px;
+  font-size: 12px;
+  color: #8a7a63;
+}
+
+.reveal-winrate {
+  font-size: 14px;
+  color: #d9cbb2;
+}
+
+.reveal-points {
+  font-weight: 700;
+  color: #6fd39a;
+}
+
+.bar-track {
+  height: 8px;
+  border-radius: 4px;
+  background: #171008;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  border-radius: 4px;
+  animation: bar-grow 0.8s cubic-bezier(0.22, 0.8, 0.3, 1);
+  transform-origin: left center;
+}
+
+@keyframes bar-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.bar-good {
+  background: linear-gradient(90deg, #3f9e5f, #6fd39a);
+}
+
+.bar-ok {
+  background: linear-gradient(90deg, #9e8b3f, #d3c36f);
+}
+
+.bar-mediocre {
+  background: linear-gradient(90deg, #9e6b3f, #d39a6f);
+}
+
+.bar-bad {
+  background: linear-gradient(90deg, #9e3f3f, #d36f6f);
+}
+
+.not-in-book {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border: 1px dashed #7a5c38;
+  border-radius: 8px;
+}
+
+.not-in-book-title {
+  font-size: 14px;
+  color: #d39a6f;
+  margin-bottom: 8px;
+}
+
+.not-in-book-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #d9cbb2;
+  padding: 3px 0;
+}

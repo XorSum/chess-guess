@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { PUZZLES } from './puzzles';
 import { loadTree, randomPuzzleFromTree, type OpeningTree } from './tree';
-import { parseFen, pieceSide, sameSquare, squaresToUci } from './fen';
-import { isLegalMove } from './rules';
-import { scoreRound } from './scoring';
+import { parseFen, pieceSide, sameSquare, squaresToUci } from '../../core/fen';
+import { isLegalMove } from '../../core/rules';
+import { scoreRound } from '../../core/scoring';
 import Board from './components/Board';
 import RevealPanel from './components/RevealPanel';
-import type { GamePhase, MarkedMove, Puzzle, Square } from './types';
+import type { GamePhase, MarkedMove, Puzzle, Square } from '../../core/types';
 
 const MAX_MARKS = 3;
 

@@ -1,14 +1,14 @@
-// 开局树校验：npx tsx scripts/check-opening-tree.ts [opening-tree.json 路径]
+// 开局树校验：npx tsx pipeline/checks/check-opening-tree.ts [opening-tree.json 路径]
 // 抽 100 个合格节点检查：FEN 合法（将帅各一、不照面）、走法在完整规则下合法且属行棋方、
 // 收缩胜率降序。另专项检查初始局面与"炮二平五后黑先"两个节点的走法表。
 import { readFileSync } from 'node:fs';
-import { parseFen, uciToSquares, pieceSide } from '../src/fen';
-import { isLegalMove, isKingsFacing } from '../src/rules';
-import { uciToChinese } from '../src/notation';
-import type { OpeningTree } from '../src/tree';
-import type { Board, Square } from '../src/types';
+import { parseFen, uciToSquares, pieceSide } from '../../core/fen';
+import { isLegalMove, isKingsFacing } from '../../core/rules';
+import { uciToChinese } from '../../core/notation';
+import type { OpeningTree } from '../../core/tree-core';
+import type { Board, Square } from '../../core/types';
 
-const path = process.argv[2] ?? 'public/opening-tree.json';
+const path = process.argv[2] ?? 'web/public/opening-tree.json';
 const tree = JSON.parse(readFileSync(path, 'utf8')) as OpeningTree;
 
 const START_KEY = 'rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w';

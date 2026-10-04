@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import type { CSSProperties } from 'react';
-import type { Puzzle, ScoredMark } from '../types';
-import { parseFen } from '../fen';
-import { uciToChinese } from '../notation';
+import type { Puzzle, ScoredMark } from '../../../core/types';
+import { parseFen } from '../../../core/fen';
+import { uciToChinese } from '../../../core/notation';
 
 interface RevealPanelProps {
   puzzle: Puzzle;

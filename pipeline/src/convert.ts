@@ -1,5 +1,5 @@
 // ICCS → 项目标准 JSONL 转换
-// 用法：npx tsx scripts/convert-iccs.ts <输入文件或目录> <输出.jsonl>
+// 用法：npx tsx pipeline/src/convert.ts <输入文件或目录> <输出.jsonl>
 // 输入：ICCS 棋谱（PGN 风格标签 + 大写坐标带横线，如 C3-C4），一个文件可含多局
 // 输出：JSON Lines，每局一行 {"event","red","black","result","date"?,"fen","moves":[uci,...]}
 import { readdirSync, statSync, mkdirSync, createReadStream, createWriteStream } from 'node:fs';
@@ -149,7 +149,7 @@ async function convertFile(file: string, out: NodeJS.WritableStream): Promise<{ 
 async function main() {
   const [input, output] = process.argv.slice(2);
   if (!input || !output) {
-    console.error('用法：npx tsx scripts/convert-iccs.ts <输入文件或目录> <输出.jsonl>');
+    console.error('用法：npx tsx pipeline/src/convert.ts <输入文件或目录> <输出.jsonl>');
     process.exit(1);
   }
   mkdirSync(path.dirname(output), { recursive: true });

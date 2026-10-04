@@ -1,0 +1,7 @@
+/* 全局：暗色主题（与网页版一致） */
+page {
+  background: #16110d;
+  color: #ece2d0;
+  font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  min-height: 100%;
+}

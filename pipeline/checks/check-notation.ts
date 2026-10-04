@@ -1,7 +1,7 @@
-// 中文记谱校验：npx tsx scripts/check-notation.ts
-import { parseFen } from '../src/fen';
-import { uciToChinese } from '../src/notation';
-import { PUZZLES } from '../src/puzzles';
+// 中文记谱校验：npx tsx pipeline/checks/check-notation.ts
+import { parseFen } from '../../core/fen';
+import { uciToChinese } from '../../core/notation';
+import { PUZZLES } from '../../web/src/puzzles';
 
 const START = 'rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR';
 

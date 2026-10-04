@@ -1,11 +1,11 @@
-// 棋谱重放验证：npx tsx scripts/validate-games.ts <输入.jsonl>
+// 棋谱重放验证：npx tsx pipeline/src/validate.ts <输入.jsonl>
 // 从 fen 开始重放 moves，用 src/rules.ts 的 isLegalMove 校验每一步。
 // 非法局写入 <输入去掉.jsonl>.invalid.jsonl，并打印统计。
 import { createReadStream, createWriteStream } from 'node:fs';
 import readline from 'node:readline';
-import { parseFen, uciToSquares, pieceSide } from '../src/fen';
-import { isLegalMove } from '../src/rules';
-import type { Board, Side, Square } from '../src/types';
+import { parseFen, uciToSquares, pieceSide } from '../../core/fen';
+import { isLegalMove } from '../../core/rules';
+import type { Board, Side, Square } from '../../core/types';
 
 function applyMove(board: Board, from: Square, to: Square): void {
   board[to.row][to.col] = board[from.row][from.col];
@@ -15,7 +15,7 @@ function applyMove(board: Board, from: Square, to: Square): void {
 async function main() {
   const [input] = process.argv.slice(2);
   if (!input) {
-    console.error('用法：npx tsx scripts/validate-games.ts <输入.jsonl>');
+    console.error('用法：npx tsx pipeline/src/validate.ts <输入.jsonl>');
     process.exit(1);
   }
   const invalidPath = input.replace(/\.jsonl$/, '') + '.invalid.jsonl';

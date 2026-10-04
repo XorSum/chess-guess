@@ -15,6 +15,17 @@ dist-ssr
 # 棋谱原始数据与转换产物
 data/
 
+# 小程序生成产物（npm run build:miniprogram 重新生成：core 编译 + 树数据 + tsc 就地编译）
+miniprogram/data/
+miniprogram/**/*.js
+miniprogram/logic/*.d.ts
+
+# WorkBuddy 本地工作目录
+.workbuddy/
+
+# 微信开发者工具本机私有配置
+miniprogram/project.private.config.json
+
 
 # Editor directories and files
 .vscode/*

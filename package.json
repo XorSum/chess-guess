@@ -7,7 +7,17 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:miniprogram": "tsc -p core/tsconfig.mp.json && node pipeline/src/emit.ts && tsc -p miniprogram/tsconfig.json",
+    "compile:miniprogram": "tsc -p miniprogram/tsconfig.json",
+    "verify:miniprogram": "node pipeline/checks/verify-miniprogram-logic.ts",
+    "pipeline:download": "node pipeline/src/download.ts",
+    "pipeline:convert": "npx tsx pipeline/src/convert.ts",
+    "pipeline:validate": "npx tsx pipeline/src/validate.ts",
+    "pipeline:tree": "npx tsx pipeline/src/build-tree.ts",
+    "check:notation": "npx tsx pipeline/checks/check-notation.ts",
+    "check:rules": "npx tsx pipeline/checks/check-rules.ts",
+    "check:tree": "npx tsx pipeline/checks/check-opening-tree.ts"
   },
   "dependencies": {
     "react": "^19.2.8",
